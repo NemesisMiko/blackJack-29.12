@@ -20,7 +20,7 @@ namespace WindowsFormsApp2
             txt_curent.Text = total + "";
             txt_chips.SelectionAlignment = HorizontalAlignment.Center;
             txt_curent.SelectionAlignment = HorizontalAlignment.Center;
-            
+
             txt_curent.SelectionAlignment = HorizontalAlignment.Center;
             igranje = new Igranje();
         }
@@ -31,6 +31,7 @@ namespace WindowsFormsApp2
         int playerTotalPoints = 0;
         int playerTotalPoints2 = 0;
         int dealerTotalPoints = 0;
+        bool isFirstHandActive = true;
 
 
 
@@ -47,8 +48,8 @@ namespace WindowsFormsApp2
             playerTotalPoints = 0;
             dealerTotalPoints = 0;
             betAmount = 0;
-            chips= 0;
-            betAmount= 0;
+            chips = 0;
+            betAmount = 0;
 
             // Enable buttons for a new game
             btn_1.Show();
@@ -61,21 +62,21 @@ namespace WindowsFormsApp2
             btn_deal.Show();
             btn_clear.Show();
             btn_hit.Hide();
-            btn_hit.Enabled= true;
+            btn_hit.Enabled = true;
             btn_stand.Hide();
-            btn_stand.Enabled= true;
+            btn_stand.Enabled = true;
             btn_split.Hide();
-            btn_split.Enabled= true;
+            btn_split.Enabled = true;
             lst_split.Hide();
             lbl_player_hand_2.Hide();
             lbl_player_points_2.Hide();
             lst_split.Hide();
             lst_split_display.Hide();
-            
 
-            lbl_player_hand_1.Location= new System.Drawing.Point(405, 153);
-            lbl_player_points_1.Location= new System.Drawing.Point(710, 153);
-            lst_display.Location= new System.Drawing.Point(681, 177);
+
+            lbl_player_hand_1.Location = new System.Drawing.Point(405, 153);
+            lbl_player_points_1.Location = new System.Drawing.Point(710, 153);
+            lst_display.Location = new System.Drawing.Point(681, 177);
             lst_player.Location = new System.Drawing.Point(376, 177);
 
             // Enable bet buttons
@@ -90,7 +91,7 @@ namespace WindowsFormsApp2
             txt_chips.Clear();
             lst_display.Items.Clear();
             lst_dealer_display.Items.Clear();
-            
+
 
             if (total <= 0)
             {
@@ -101,66 +102,145 @@ namespace WindowsFormsApp2
 
 
 
+        //private void UpdatePointsForHand(ListBox hand, ListBox pointsDisplay, ref int totalPoints, Karta card)
+        //{
+        //    string cardValue = card.Ime.Split(' ')[0];
+        //    Vrednosti value = (Vrednosti)Enum.Parse(typeof(Vrednosti), cardValue);
 
+        //    // Update total points for the hand
+        //    totalPoints += (value == Vrednosti.As && totalPoints + 11 > 21) ? 1 : (value == Vrednosti.Janez) ? 10 : (int)value;
+
+        //    // Display the updated points
+        //    pointsDisplay.Items.Clear();
+        //    pointsDisplay.Items.Add($"Points: {totalPoints}");
+
+        //    // Add the drawn card to the hand
+        //    hand.Items.Add(card.Ime);
+        //}
         private void button1_Click(object sender, EventArgs e)//hit
         {
+            ListBox currentHand = (lst_player.Items.Count > 0 && lst_split.Items.Count == 1) ? lst_player : lst_split;
+            int currentTotalPoints = CalculateHandPoints(currentHand);
 
             //List<Karta> card1 = igranje.DealHand();
             betAmount = chips;
             Karta card = igranje.DrawCard();
-            if (card.Value < 21)
+            if (currentHand == lst_player)
             {
-                lst_player.Items.Add(card.Ime);
-                if (card.Vrednost == Vrednosti.As && playerTotalPoints + card.Value > 21)
+                if (card.Value < 21)
                 {
-                    // If adding 11 points for an Ace would result in a bust, use 1 point instead
-                    playerTotalPoints += 1;
-                }
-                else
-                {
-                    playerTotalPoints += card.Value;
-                }
 
-                lst_display.Items.Add($"Points: {playerTotalPoints}");
-
-
-                //if (playerTotalPoints < 21)
-                //{
-                //    lst_player.Items.Add(igranje.DrawCard());
-                //    playerTotalPoints += 
-                //}
-                //foreach (var card in card1)
-                //{
-                //    lst_player.Items.Add(card.Ime);
-                //    playerTotalPoints += card.Value; // Update total points for each new card
-                //}
-                //txt_curent.Text = playerTotalPoints.ToString();
-
-                if (playerTotalPoints >= 21)
-                {
-                    btn_hit.Enabled = false;
-                    if (playerTotalPoints == 21)
+                    lst_player.Items.Add(card.Ime);
+                    if (card.Vrednost == Vrednosti.As && playerTotalPoints + card.Value > 21)
                     {
-                        
-                        // Player wins, add double the bet to total chips
-                        total += 2 * betAmount;
-
-                        // Update the total chips display
-                        txt_curent.Text = total.ToString();
-                        MessageBox.Show("Blackjack! You win!");
-                        RestartGame();
+                        // If adding 11 points for an Ace would result in a bust, use 1 point instead
+                        playerTotalPoints += 1;
                     }
                     else
                     {
-                        MessageBox.Show("Bust! You lose!");
-                        RestartGame();
+                        //playerTotalPoints += card.Value;
+                        playerTotalPoints = CalculateHandPoints(lst_player);
+                        //lst_display.Items.Add($"Points: {playerTotalPoints}");
+                    }
+
+                    lst_display.Items.Add($"Points: {playerTotalPoints}");
+
+
+                    //if (playerTotalPoints < 21)
+                    //{
+                    //    lst_player.Items.Add(igranje.DrawCard());
+                    //    playerTotalPoints += 
+                    //}
+                    //foreach (var card in card1)
+                    //{
+                    //    lst_player.Items.Add(card.Ime);
+                    //    playerTotalPoints += card.Value; // Update total points for each new card
+                    //}
+                    //txt_curent.Text = playerTotalPoints.ToString();
+
+                    if (playerTotalPoints >= 21 || playerTotalPoints >= 21)
+                    {
+
+                        if (playerTotalPoints == 21)
+                        {
+
+                            // Player wins, add double the bet to total chips
+                            total += 2 * betAmount;
+
+                            // Update the total chips display
+                            txt_curent.Text = total.ToString();
+                            MessageBox.Show("Blackjack! You win!");
+                            if (lst_split.Visible == false)
+                                RestartGame();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bust! You lose!");
+                            if (lst_split.Visible == false)
+                                RestartGame();
+                        }
+                    }
+                }
+            }
+            //_________________________________________
+            else
+            {
+                if (card.Value < 21)
+                {
+                    lst_split.Items.Add(card.Ime);
+                    if (card.Vrednost == Vrednosti.As && playerTotalPoints + card.Value > 21)
+                    {
+                        // If adding 11 points for an Ace would result in a bust, use 1 point instead
+                        playerTotalPoints += 1;
+                    }
+                    else
+                    {
+                        //playerTotalPoints += card.Value;
+                        playerTotalPoints = CalculateHandPoints(lst_player);
+                        //lst_display.Items.Add($"Points: {playerTotalPoints}");
+                    }
+
+                    lst_split_display.Items.Add($"Points: {playerTotalPoints}");
+
+
+                    //if (playerTotalPoints < 21)
+                    //{
+                    //    lst_player.Items.Add(igranje.DrawCard());
+                    //    playerTotalPoints += 
+                    //}
+                    //foreach (var card in card1)
+                    //{
+                    //    lst_player.Items.Add(card.Ime);
+                    //    playerTotalPoints += card.Value; // Update total points for each new card
+                    //}
+                    //txt_curent.Text = playerTotalPoints.ToString();
+
+                    if (playerTotalPoints >= 21 || playerTotalPoints >= 21)
+                    {
+                        btn_hit.Enabled = false;
+                        if (playerTotalPoints == 21)
+                        {
+
+                            // Player wins, add double the bet to total chips
+                            total += 2 * betAmount;
+
+                            // Update the total chips display
+                            txt_curent.Text = total.ToString();
+                            MessageBox.Show("Blackjack! You win!");
+                            RestartGame();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bust! You lose!");
+                            RestartGame();
+                        }
                     }
                 }
 
 
             }
 
-                //lst_player.Items.Add(han.Ime);
+            //lst_player.Items.Add(han.Ime);
 
         }
 
@@ -184,7 +264,7 @@ namespace WindowsFormsApp2
                 btn_split.Show();
                 btn_stand.Show();
 
-                
+
 
 
                 lst_dealer.Items.Clear();
@@ -193,7 +273,7 @@ namespace WindowsFormsApp2
                 //igranje.Deli();
                 //igranje = new Igranje();
                 List<Karta> card1 = igranje.DealHand();
-                
+
 
                 foreach (var hand in card1)
                 {
@@ -201,10 +281,10 @@ namespace WindowsFormsApp2
                     dealerTotalPoints += hand.Value;
                 }
                 List<Karta> card2 = igranje.DealHand();
-                
+
                 foreach (var hand in card2)
                 {
-                   
+
                     lst_player.Items.Add(hand.Ime);
                     playerTotalPoints += hand.Value;
                     if (playerTotalPoints == 21)
@@ -216,13 +296,13 @@ namespace WindowsFormsApp2
                         MessageBox.Show("Blackjack! You win!");
                         RestartGame();
                     }
-                    if(dealerTotalPoints == 21)
+                    if (dealerTotalPoints == 21)
                     {
                         MessageBox.Show("Dealer hit Blackjack! You lose!");
                         RestartGame();
                     }
                 }
-                
+
                 lst_display.Items.Add($"Points: {playerTotalPoints}");
                 lst_dealer_display.Items.Add($"Points: {dealerTotalPoints}");
 
@@ -237,10 +317,10 @@ namespace WindowsFormsApp2
 
             if (total >= 1)
             {
-                if(total >= chips +1)
-                { 
-                chips += 1;
-                txt_chips.Text = chips + "";
+                if (total >= chips + 1)
+                {
+                    chips += 1;
+                    txt_chips.Text = chips + "";
                 }
             }
 
@@ -311,7 +391,7 @@ namespace WindowsFormsApp2
         {
             chips = total;
             txt_chips.Text = total + "";
-            
+
         }
 
         private void txt_curent_TextChanged(object sender, EventArgs e)
@@ -325,24 +405,24 @@ namespace WindowsFormsApp2
             btn_split.Enabled = false;
             btn_stand.Enabled = false;
             //__________________________________
-            
-                while (dealerTotalPoints < playerTotalPoints && dealerTotalPoints <= 17)
+
+            while (dealerTotalPoints < playerTotalPoints && dealerTotalPoints <= 17)
+            {
+                Karta card = igranje.DrawCard();
+                lst_dealer.Items.Add(card.Ime);
+
+                if (card.Vrednost == Vrednosti.As && dealerTotalPoints + card.Value > 21)
                 {
-                    Karta card = igranje.DrawCard();
-                    lst_dealer.Items.Add(card.Ime);
-                    
-                    if (card.Vrednost == Vrednosti.As && dealerTotalPoints + card.Value > 21)
-                    {
-                        // If adding 11 points for an Ace would result in a bust, use 1 point instead
-                        dealerTotalPoints += 1;
-                    }
-                    else
-                    {
-                        dealerTotalPoints += card.Value;
-                    }
+                    // If adding 11 points for an Ace would result in a bust, use 1 point instead
+                    dealerTotalPoints += 1;
+                }
+                else
+                {
+                    dealerTotalPoints += card.Value;
+                }
                 lst_dealer_display.Items.Add($"Points: {dealerTotalPoints}");
             }
-            
+
 
 
             if (playerTotalPoints > 21 || (dealerTotalPoints <= 21 && dealerTotalPoints > playerTotalPoints))
@@ -384,12 +464,12 @@ namespace WindowsFormsApp2
 
             // Update the total chips display
             txt_curent.Text = total.ToString();
-            
+
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            chips= 0;
+            chips = 0;
             txt_chips.Text = null;
         }
 
@@ -421,11 +501,12 @@ namespace WindowsFormsApp2
                 string card1Value = lst_player.Items[0].ToString().Split(' ')[0];
                 string card2Value = lst_player.Items[1].ToString().Split(' ')[0];
 
-
+                //playerTotalPoints = int.Parse(card1Value);
+                //playerTotalPoints2= int.Parse(card2Value);
                 lst_display.Items.Add($"Points: {playerTotalPoints}");
                 lst_dealer_display.Items.Add($"Points: {playerTotalPoints2}");
                 // Check if the two cards have the same value
-                if (card1Value!=null) //card1Value == card2Value/*
+                if (card1Value != null) //card1Value == card2Value/*
                 {
                     // Perform Split
                     SplitCards();
@@ -450,86 +531,53 @@ namespace WindowsFormsApp2
         {
             if (total >= betAmount * 2)
             {
-                // Create a new list to represent the split hand
+                total -= betAmount;
+
+                txt_curent.Text = total.ToString();
+                txt_chips.Text = (2 * betAmount).ToString();
                 lst_split.Items.Add(lst_player.Items[1]);
                 lst_player.Items.RemoveAt(1);
 
                 lst_display.Items.Clear();
                 lst_dealer_display.Items.Clear();
 
-                Karta card = igranje.DrawCard();
-                
-
-                lst_display.Items.Add($"Points: {playerTotalPoints}");
-                lst_dealer_display.Items.Add($"Points: {playerTotalPoints2}");
-
-                
 
 
-                
+                int playerTotalPoints1 = CalculateHandPoints(lst_player);
+                lst_display.Items.Add($"Points: {playerTotalPoints1}");
 
-                //List<string> splitHand = new List<string>
-                //    {
-                //        lst_player.Items[1].ToString()
-                //    };
-                ////
-
-                ////foreach (var hand in card2)
-                ////{
-                ////    lst_player.Items.Add(hand.Ime);
-                ////    playerTotalPoints += hand.Value;
-                ////}
-                ////
-
-                //    // Remove the second card from the original hand
-                //lst_player.Items.RemoveAt(1);
+                int playerTotalPoints2 = CalculateHandPoints(lst_split);
+                lst_split_display.Items.Add($"Points: {playerTotalPoints2}");
 
 
 
 
-                //// Display the split hand in the split list box
-                //lst_split.Items.AddRange(splitHand.ToArray());
 
 
 
-
-                //lst_display.Items.Clear();
-                //lst_display.Items.Add($"Points: {playerTotalPoints}");
-                //lst_split_display.Items.Add($"Points: {playerTotalPoints }");
-
-                // Deduct chips for the split
-                //total -= chips;
-                //txt_curent.Text = total.ToString();
-
-                //// Show the split hand
-                //lst_split.Items.Add(lst_player.Items[1]);
-                //lst_player.Items.RemoveAt(1);
-
-                //// Calculate points for each hand
-                //playerTotalPoints = lst_player.Items.Cast<Karta>().Sum(card => card.Value);
-                //int splitHandPoints = lst_split.Items.Cast<Karta>().Sum(card => card.Value);
-
-                //lst_display.Items.Clear();
-                //lst_dealer_display.Items.Clear();
-
-                //lst_display.Items.Add($"Points: {playerTotalPoints}");
-                //lst_dealer_display.Items.Add($"Points: {splitHandPoints}");
-
-                //// Disable split button after splitting
-                //btn_split.Enabled = false;
-
-                //// Enable buttons for the first hand
-                //btn_hit.Enabled = true;
-                //btn_stand.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Not enough chips for the split!");
             }
-        
-        //_____________________________________________________________
 
-        //_______________________________________________________________
-    }
+        }
+        private int CalculateHandPoints(ListBox hand)
+        {
+            int totalPoints = 0;
+
+            foreach (var item in hand.Items)
+            {
+                string cardValue = item.ToString().Split(' ')[0];
+                Vrednosti value = (Vrednosti)Enum.Parse(typeof(Vrednosti), cardValue);
+
+                // Update total points for each card in the hand
+                totalPoints += (value == Vrednosti.As && totalPoints + 11 > 21) ? 1 : (value == Vrednosti.Janez) ? 10 : (value == Vrednosti.Dama) ? 10 : (value == Vrednosti.Kralj) ? 10 : (int)value;
+
+            }
+
+
+            return totalPoints;
+        }
     }
 }
