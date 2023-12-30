@@ -62,95 +62,117 @@
             // 
             // btn_hit
             // 
+            this.btn_hit.BackColor = System.Drawing.Color.Yellow;
+            this.btn_hit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_hit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_hit.Location = new System.Drawing.Point(279, 334);
             this.btn_hit.Name = "btn_hit";
             this.btn_hit.Size = new System.Drawing.Size(93, 35);
             this.btn_hit.TabIndex = 1;
             this.btn_hit.Text = "Hit";
-            this.btn_hit.UseVisualStyleBackColor = true;
+            this.btn_hit.UseVisualStyleBackColor = false;
             this.btn_hit.Visible = false;
             this.btn_hit.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_stand
             // 
+            this.btn_stand.BackColor = System.Drawing.Color.Red;
+            this.btn_stand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_stand.Location = new System.Drawing.Point(387, 334);
             this.btn_stand.Name = "btn_stand";
             this.btn_stand.Size = new System.Drawing.Size(93, 35);
             this.btn_stand.TabIndex = 2;
             this.btn_stand.Text = "Stand";
-            this.btn_stand.UseVisualStyleBackColor = true;
+            this.btn_stand.UseVisualStyleBackColor = false;
             this.btn_stand.Visible = false;
             this.btn_stand.Click += new System.EventHandler(this.btn_stand_Click);
             // 
             // btn_split
             // 
+            this.btn_split.BackColor = System.Drawing.Color.DarkGreen;
+            this.btn_split.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_split.Location = new System.Drawing.Point(496, 334);
             this.btn_split.Name = "btn_split";
             this.btn_split.Size = new System.Drawing.Size(93, 35);
             this.btn_split.TabIndex = 3;
             this.btn_split.Text = "Split";
-            this.btn_split.UseVisualStyleBackColor = true;
+            this.btn_split.UseVisualStyleBackColor = false;
             this.btn_split.Visible = false;
             this.btn_split.Click += new System.EventHandler(this.btn_split_Click);
             // 
             // btn_1
             // 
+            this.btn_1.BackColor = System.Drawing.Color.White;
+            this.btn_1.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_1.ForeColor = System.Drawing.Color.Black;
             this.btn_1.Location = new System.Drawing.Point(173, 97);
             this.btn_1.Name = "btn_1";
             this.btn_1.Size = new System.Drawing.Size(40, 40);
             this.btn_1.TabIndex = 8;
             this.btn_1.Text = "1€";
-            this.btn_1.UseVisualStyleBackColor = true;
+            this.btn_1.UseVisualStyleBackColor = false;
             this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // btn_5
             // 
+            this.btn_5.BackColor = System.Drawing.Color.Red;
+            this.btn_5.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_5.Location = new System.Drawing.Point(171, 153);
             this.btn_5.Name = "btn_5";
             this.btn_5.Size = new System.Drawing.Size(40, 40);
             this.btn_5.TabIndex = 9;
             this.btn_5.Text = "5€";
-            this.btn_5.UseVisualStyleBackColor = true;
+            this.btn_5.UseVisualStyleBackColor = false;
             this.btn_5.Click += new System.EventHandler(this.btn_5_Click);
             // 
             // btn_10
             // 
+            this.btn_10.BackColor = System.Drawing.Color.Blue;
+            this.btn_10.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_10.ForeColor = System.Drawing.Color.Transparent;
             this.btn_10.Location = new System.Drawing.Point(171, 214);
             this.btn_10.Name = "btn_10";
             this.btn_10.Size = new System.Drawing.Size(40, 40);
             this.btn_10.TabIndex = 10;
             this.btn_10.Text = "10€";
-            this.btn_10.UseVisualStyleBackColor = true;
+            this.btn_10.UseVisualStyleBackColor = false;
             this.btn_10.Click += new System.EventHandler(this.btn_10_Click);
             // 
             // btn_25
             // 
+            this.btn_25.BackColor = System.Drawing.Color.Green;
+            this.btn_25.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_25.Location = new System.Drawing.Point(226, 97);
             this.btn_25.Name = "btn_25";
             this.btn_25.Size = new System.Drawing.Size(40, 40);
             this.btn_25.TabIndex = 11;
             this.btn_25.Text = "25€";
-            this.btn_25.UseVisualStyleBackColor = true;
+            this.btn_25.UseVisualStyleBackColor = false;
             this.btn_25.Click += new System.EventHandler(this.btn_25_Click);
             // 
             // btn_50
             // 
+            this.btn_50.BackColor = System.Drawing.Color.Orange;
+            this.btn_50.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_50.Location = new System.Drawing.Point(226, 153);
             this.btn_50.Name = "btn_50";
             this.btn_50.Size = new System.Drawing.Size(40, 40);
             this.btn_50.TabIndex = 12;
             this.btn_50.Text = "50€";
-            this.btn_50.UseVisualStyleBackColor = true;
+            this.btn_50.UseVisualStyleBackColor = false;
             this.btn_50.Click += new System.EventHandler(this.btn_50_Click);
             // 
             // btn_100
             // 
+            this.btn_100.BackColor = System.Drawing.Color.Black;
+            this.btn_100.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_100.ForeColor = System.Drawing.Color.Transparent;
             this.btn_100.Location = new System.Drawing.Point(226, 214);
             this.btn_100.Name = "btn_100";
             this.btn_100.Size = new System.Drawing.Size(40, 40);
             this.btn_100.TabIndex = 13;
             this.btn_100.Text = "100€";
-            this.btn_100.UseVisualStyleBackColor = true;
+            this.btn_100.UseVisualStyleBackColor = false;
             this.btn_100.Click += new System.EventHandler(this.btn_100_Click);
             // 
             // txt_chips
@@ -164,22 +186,26 @@
             // 
             // btn_allIn
             // 
+            this.btn_allIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_allIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_allIn.Location = new System.Drawing.Point(171, 270);
             this.btn_allIn.Name = "btn_allIn";
             this.btn_allIn.Size = new System.Drawing.Size(95, 40);
             this.btn_allIn.TabIndex = 15;
             this.btn_allIn.Text = "All in";
-            this.btn_allIn.UseVisualStyleBackColor = true;
+            this.btn_allIn.UseVisualStyleBackColor = false;
             this.btn_allIn.Click += new System.EventHandler(this.btn_allIn_Click);
             // 
             // btn_deal
             // 
+            this.btn_deal.BackColor = System.Drawing.Color.Yellow;
+            this.btn_deal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deal.Location = new System.Drawing.Point(34, 165);
             this.btn_deal.Name = "btn_deal";
             this.btn_deal.Size = new System.Drawing.Size(95, 89);
             this.btn_deal.TabIndex = 16;
             this.btn_deal.Text = "Deal";
-            this.btn_deal.UseVisualStyleBackColor = true;
+            this.btn_deal.UseVisualStyleBackColor = false;
             this.btn_deal.Click += new System.EventHandler(this.button13_Click);
             // 
             // imageList1
@@ -234,12 +260,14 @@
             // 
             // btn_clear
             // 
+            this.btn_clear.BackColor = System.Drawing.Color.Snow;
+            this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clear.Location = new System.Drawing.Point(34, 270);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(95, 39);
             this.btn_clear.TabIndex = 21;
             this.btn_clear.Text = "Clear bet";
-            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.UseVisualStyleBackColor = false;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // lst_split
@@ -278,45 +306,50 @@
             // lbl_player_points_1
             // 
             this.lbl_player_points_1.AutoSize = true;
-            this.lbl_player_points_1.Location = new System.Drawing.Point(710, 153);
+            this.lbl_player_points_1.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_player_points_1.Location = new System.Drawing.Point(693, 153);
             this.lbl_player_points_1.Name = "lbl_player_points_1";
-            this.lbl_player_points_1.Size = new System.Drawing.Size(67, 13);
+            this.lbl_player_points_1.Size = new System.Drawing.Size(96, 14);
             this.lbl_player_points_1.TabIndex = 26;
             this.lbl_player_points_1.Text = "Player points";
             // 
             // lst_dealer_points
             // 
             this.lst_dealer_points.AutoSize = true;
-            this.lst_dealer_points.Location = new System.Drawing.Point(710, 9);
+            this.lst_dealer_points.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lst_dealer_points.Location = new System.Drawing.Point(691, 9);
             this.lst_dealer_points.Name = "lst_dealer_points";
-            this.lst_dealer_points.Size = new System.Drawing.Size(69, 13);
+            this.lst_dealer_points.Size = new System.Drawing.Size(98, 14);
             this.lst_dealer_points.TabIndex = 27;
             this.lst_dealer_points.Text = "Dealer points";
             // 
             // lbl_player_hand_1
             // 
             this.lbl_player_hand_1.AutoSize = true;
-            this.lbl_player_hand_1.Location = new System.Drawing.Point(405, 153);
+            this.lbl_player_hand_1.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_player_hand_1.Location = new System.Drawing.Point(391, 153);
             this.lbl_player_hand_1.Name = "lbl_player_hand_1";
-            this.lbl_player_hand_1.Size = new System.Drawing.Size(66, 13);
+            this.lbl_player_hand_1.Size = new System.Drawing.Size(90, 14);
             this.lbl_player_hand_1.TabIndex = 28;
             this.lbl_player_hand_1.Text = "Player hand ";
             // 
             // lbl_dealer_hand
             // 
             this.lbl_dealer_hand.AutoSize = true;
-            this.lbl_dealer_hand.Location = new System.Drawing.Point(405, 9);
+            this.lbl_dealer_hand.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dealer_hand.Location = new System.Drawing.Point(391, 9);
             this.lbl_dealer_hand.Name = "lbl_dealer_hand";
-            this.lbl_dealer_hand.Size = new System.Drawing.Size(65, 13);
+            this.lbl_dealer_hand.Size = new System.Drawing.Size(89, 14);
             this.lbl_dealer_hand.TabIndex = 29;
             this.lbl_dealer_hand.Text = "Dealer hand";
             // 
             // lbl_player_hand_2
             // 
             this.lbl_player_hand_2.AutoSize = true;
+            this.lbl_player_hand_2.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_player_hand_2.Location = new System.Drawing.Point(651, 334);
             this.lbl_player_hand_2.Name = "lbl_player_hand_2";
-            this.lbl_player_hand_2.Size = new System.Drawing.Size(72, 13);
+            this.lbl_player_hand_2.Size = new System.Drawing.Size(97, 14);
             this.lbl_player_hand_2.TabIndex = 30;
             this.lbl_player_hand_2.Text = "Player hand 2";
             this.lbl_player_hand_2.Visible = false;
@@ -324,9 +357,10 @@
             // lbl_player_points_2
             // 
             this.lbl_player_points_2.AutoSize = true;
+            this.lbl_player_points_2.Font = new System.Drawing.Font("Montserrat Subrayada", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_player_points_2.Location = new System.Drawing.Point(761, 334);
             this.lbl_player_points_2.Name = "lbl_player_points_2";
-            this.lbl_player_points_2.Size = new System.Drawing.Size(76, 13);
+            this.lbl_player_points_2.Size = new System.Drawing.Size(106, 14);
             this.lbl_player_points_2.TabIndex = 31;
             this.lbl_player_points_2.Text = "Player points 2";
             this.lbl_player_points_2.Visible = false;
@@ -335,6 +369,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.ForestGreen;
             this.ClientSize = new System.Drawing.Size(914, 450);
             this.Controls.Add(this.lbl_player_points_2);
             this.Controls.Add(this.lbl_player_hand_2);
@@ -364,8 +399,10 @@
             this.Controls.Add(this.btn_split);
             this.Controls.Add(this.btn_stand);
             this.Controls.Add(this.btn_hit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "BLACK JACK";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
